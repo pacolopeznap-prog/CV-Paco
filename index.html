@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Francisco Javier López González | Portfolio</title>
+  <meta name="description" content="Docente, consultor HR & Business Developer, especialista en ventas, liderazgo e IA aplicada." />
+  <style>
+    :root {
+      --bg: #f7f4f2;
+      --card: #ffffff;
+      --text: #1f1f1f;
+      --muted: #666;
+      --accent: #c97f7f;
+      --accent-dark: #a85f5f;
+      --line: #e7dedd;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(rgba(247, 244, 242, 0.9), rgba(247, 244, 242, 0.96)),
+        radial-gradient(circle at top right, rgba(201, 127, 127, 0.15), transparent 30%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 5rem 0 4rem;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(201, 127, 127, 0.12);
+      color: var(--accent-dark);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.05;
+      margin: 0 0 1rem;
+      letter-spacing: -0.03em;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 65ch;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-card, .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(31,31,31,0.04);
+    }
+
+    .hero-card {
+      padding: 1.5rem;
+    }
+
+    .stats {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .stat {
+      padding: 1rem;
+      border-radius: 18px;
+      background: #fcfaf9;
+      border: 1px solid var(--line);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.7rem;
+      color: var(--accent-dark);
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.2rem;
+      border-radius: 14px;
+      font-weight: 600;
+      border: 1px solid var(--accent);
+      transition: 0.2s ease;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn.secondary {
+      background: white;
+      color: var(--accent-dark);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(201, 127, 127, 0.14);
+    }
+
+    section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      margin: 0 0 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 70ch;
+      margin-bottom: 2rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    .card {
+      padding: 1.4rem;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.7rem;
+      font-size: 1.1rem;
+    }
+
+    .muted { color: var(--muted); }
+
+    ul.clean {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline .item {
+      padding: 1.2rem 1.3rem;
+      border-left: 4px solid var(--accent);
+      background: white;
+      border-radius: 0 18px 18px 0;
+      border-top: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .pill {
+      padding: 0.65rem 0.9rem;
+      border-radius: 999px;
+      background: white;
+      border: 1px solid var(--line);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      padding: 2.5rem 0 4rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    @media (max-width: 900px) {
+      .hero, .grid-3, .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">Francisco Javier López González</div>
+        <div class="nav-links">
+          <a href="#sobre-mi">Sobre mí</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#experiencia">Experiencia</a>
+          <a href="#especializacion">Especialización</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+      </nav>
+
+      <div class="hero">
+        <div>
+          <span class="eyebrow">Docente · Consultor · Business Developer</span>
+          <h1>Ventas, liderazgo e IA aplicada con enfoque real de negocio.</h1>
+          <p class="lead">
+            Ayudo a empresas, equipos y profesionales a mejorar resultados comerciales, desarrollar liderazgo y aplicar la inteligencia artificial de forma práctica, rentable y aterrizada.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="mailto:paco.lopez.nap@gmail.com">Contactar por email</a>
+            <a class="btn secondary" href="#experiencia">Ver experiencia</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="stats">
+            <div class="stat">
+              <strong>20+ años</strong>
+              <span>en ámbito comercial, formación y desarrollo de negocio</span>
+            </div>
+            <div class="stat">
+              <strong>10+ años</strong>
+              <span>en posiciones directivas y estratégicas</span>
+            </div>
+            <div class="stat">
+              <strong>4 regiones</strong>
+              <span>experiencia en España, África, Oriente Medio y Latinoamérica</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="sobre-mi">
+      <div class="container">
+        <h2 class="section-title">Sobre mí</h2>
+        <p class="section-intro">
+          Soy docente y consultor senior con trayectoria internacional, combinando una base pedagógica sólida con experiencia ejecutiva en ventas complejas, liderazgo, desarrollo de equipos, cambio cultural e inteligencia artificial aplicada.
+        </p>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Visión estratégica</h3>
+            <p class="muted">Comprensión integral de negocio, procesos comerciales y su impacto directo en resultados.</p>
+          </article>
+          <article class="card">
+            <h3>Formación aplicada</h3>
+            <p class="muted">Metodología práctica, medible y orientada a transferencia real al puesto de trabajo.</p>
+          </article>
+          <article class="card">
+            <h3>Adaptabilidad internacional</h3>
+            <p class="muted">Experiencia en distintos contextos culturales y sectores, con enfoque flexible y ejecutivo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios">
+      <div class="container">
+        <h2 class="section-title">Servicios</h2>
+        <p class="section-intro">Tres motores para poner a rodar resultados, liderazgo y transformación con IA.</p>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Formación corporativa</h3>
+            <ul class="clean muted">
+              <li>Ventas y desarrollo comercial</li>
+              <li>Liderazgo y gestión de equipos</li>
+              <li>Comunicación y soft skills</li>
+              <li>IA generativa aplicada al trabajo</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Consultoría estratégica</h3>
+            <ul class="clean muted">
+              <li>Desarrollo de negocio</li>
+              <li>Optimización comercial</li>
+              <li>Transformación cultural</li>
+              <li>Diseño y defensa de proyectos</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Programas para mandos y directivos</h3>
+            <ul class="clean muted">
+              <li>Liderazgo efectivo</li>
+              <li>Gestión del cambio</li>
+              <li>Feedback profesional</li>
+              <li>Comunicación de alto impacto</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencia">
+      <div class="container">
+        <h2 class="section-title">Experiencia destacada</h2>
+        <div class="timeline">
+          <div class="item">
+            <h3>Zero Racing Motorsport · Fundador & CEO</h3>
+            <p class="muted">Creación y gestión de escudería propia en colaboración con Triumph Motorcycles para el Campeonato de España de Velocidad.</p>
+          </div>
+          <div class="item">
+            <h3>Grupo Virensis · Vicepresidente Ejecutivo</h3>
+            <p class="muted">Responsable del desarrollo estratégico y operativo durante casi una década, participando en un crecimiento acumulado del 80%.</p>
+          </div>
+          <div class="item">
+            <h3>Cronogestión y LICITARI · Fundador & CSO</h3>
+            <p class="muted">Proyecto de outsourcing comercial para pymes y autónomos, enfocado en procesos de venta y licitaciones públicas.</p>
+          </div>
+          <div class="item">
+            <h3>GALEA · Consultor Internacional</h3>
+            <p class="muted">Liderazgo de proyectos estratégicos en África Central y Colombia, incluyendo procesos de negociación de paz.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="especializacion">
+      <div class="container">
+        <h2 class="section-title">Áreas de especialización</h2>
+        <div class="grid-2">
+          <article class="card">
+            <h3>Ventas y desarrollo comercial</h3>
+            <div class="pill-list">
+              <span class="pill">Hunting</span>
+              <span class="pill">Fidelización</span>
+              <span class="pill">Venta compleja</span>
+              <span class="pill">Persuasión</span>
+              <span class="pill">Dirección de ventas</span>
+              <span class="pill">New Sales Skills</span>
+            </div>
+          </article>
+          <article class="card">
+            <h3>IA aplicada</h3>
+            <div class="pill-list">
+              <span class="pill">IA generativa</span>
+              <span class="pill">ChatGPT</span>
+              <span class="pill">Copilot</span>
+              <span class="pill">Automatización</span>
+              <span class="pill">Productividad</span>
+              <span class="pill">IA para ventas</span>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Liderazgo y gestión de equipos</h3>
+            <div class="pill-list">
+              <span class="pill">Mandos intermedios</span>
+              <span class="pill">Motivación</span>
+              <span class="pill">Conflictos</span>
+              <span class="pill">Comunicación efectiva</span>
+              <span class="pill">Feedback</span>
+              <span class="pill">Evaluación 360º</span>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Comunicación y desarrollo organizativo</h3>
+            <div class="pill-list">
+              <span class="pill">Hablar en público</span>
+              <span class="pill">Inteligencia emocional</span>
+              <span class="pill">Trabajo en equipo</span>
+              <span class="pill">Diseño de proyectos</span>
+              <span class="pill">Negociación internacional</span>
+              <span class="pill">Cambio cultural</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Colaboraciones y clientes</h2>
+        <div class="grid-2">
+          <article class="card">
+            <h3>Entidades con las que colaboro</h3>
+            <ul class="clean muted">
+              <li>Adams Formación</li>
+              <li>Randstad Learning</li>
+              <li>Claire Joster</li>
+              <li>Eurofirms</li>
+              <li>IMF Formación</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Clientes destacados</h3>
+            <p class="muted">Intelcia, Ford, Faconauto, Acciona, Coca-Cola, Audemars Piguet, HC Hospitales, Trane Technologies, CCC, Alcampo, Actren y Assa Abloy.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Formación y certificaciones</h2>
+        <div class="grid-3">
+          <article class="card"><h3>Pedagogía</h3><p class="muted">Licenciado en Pedagogía, UCM / UAM</p></article>
+          <article class="card"><h3>Especialización en IA</h3><p class="muted">UNED y Universidad de Reikiavik</p></article>
+          <article class="card"><h3>Máster</h3><p class="muted">Energías Renovables, Universidad Nebrija</p></article>
+          <article class="card"><h3>Coaching</h3><p class="muted">Certificación en Coaching, DGF Formación</p></article>
+          <article class="card"><h3>Agile</h3><p class="muted">Lean & Scrum, Dubái</p></article>
+          <article class="card"><h3>Cambio cultural</h3><p class="muted">Premio AVANZA 2018</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <div class="card">
+          <h2 class="section-title">Contacto</h2>
+          <p class="section-intro">Si quieres una web viva en GitHub Pages, aquí ya tienes el motor. Solo faltan dos tornillos y darle al interruptor.</p>
+          <p><strong>Email:</strong> <a href="mailto:paco.lopez.nap@gmail.com">paco.lopez.nap@gmail.com</a></p>
+          <p><strong>Teléfono:</strong> <a href="tel:+34645756904">645 75 69 04</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Francisco Javier López González. Portfolio profesional.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
