@@ -235,138 +235,25 @@
       box-shadow: 0 20px 36px rgba(14, 55, 122, 0.35);
     }
 
-    .carousel-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.75rem;
-      margin-top: 0.75rem;
-    }
-
-    .carousel-nav {
-      display: inline-flex;
-      gap: 0.5rem;
-    }
-
-    .carousel-btn {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      border: 1px solid rgba(125, 196, 255, 0.5);
-      background: rgba(47, 140, 255, 0.14);
-      color: var(--accent-dark);
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-
-    .carousel-btn:hover {
-      transform: translateY(-1px) scale(1.04);
-      background: rgba(47, 140, 255, 0.25);
-    }
-
-    .carousel-wrap {
-      display: flex;
-      align-items: stretch;
-      width: 100%;
-      overflow: hidden;
-      border-radius: 20px;
-      border: 1px solid var(--line);
-      background:
-        radial-gradient(circle at 50% 0%, rgba(125, 196, 255, 0.1), transparent 42%),
-        rgba(7, 14, 27, 0.86);
+    .entities-frame {
       margin-top: 1rem;
-      padding: 1rem clamp(0.5rem, 2vw, 1rem);
-      min-height: clamp(170px, 30vw, 250px);
-      position: relative;
-      touch-action: pan-y;
-    }
-
-    .carousel-wrap::before,
-    .carousel-wrap::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      width: 16%;
-      pointer-events: none;
-      z-index: 3;
-    }
-
-    .carousel-wrap::before {
-      left: 0;
-      background: linear-gradient(90deg, rgba(7, 14, 27, 0.95), transparent);
-    }
-
-    .carousel-wrap::after {
-      right: 0;
-      margin-left: auto;
-      background: linear-gradient(-90deg, rgba(7, 14, 27, 0.95), transparent);
-    }
-
-    .carousel-track {
-      flex: 1 1 auto;
-      display: flex;
-      align-items: stretch;
-      gap: clamp(0.7rem, 2vw, 1rem);
-      will-change: transform;
-      transition: transform 0.45s cubic-bezier(.21,.86,.34,1);
-      padding: 0;
-    }
-
-    .carousel-slide {
-      flex: 0 0 clamp(210px, 68vw, 340px);
-      min-height: 130px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(7, 14, 27, 0.86);
       padding: 1.1rem;
-      border-radius: 16px;
-      border: 1px solid rgba(147, 165, 200, 0.3);
-      background: linear-gradient(160deg, rgba(18, 31, 54, 0.95), rgba(10, 18, 33, 0.96));
-      display: flex;
-      align-items: end;
-      justify-content: center;
-      text-align: center;
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
-      transform: scale(0.86);
-      opacity: 0.45;
-      filter: saturate(0.8);
-      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, filter 0.35s ease;
     }
 
-    .carousel-slide.is-active {
-      transform: scale(1);
-      border-color: rgba(255, 208, 91, 0.8);
-      box-shadow:
-        0 0 0 1px rgba(255, 208, 91, 0.3),
-        0 18px 34px rgba(13, 33, 75, 0.5);
-      opacity: 1;
-      filter: saturate(1);
-      position: relative;
-      z-index: 2;
+    .entities-list {
+      display: grid;
+      gap: 0.6rem;
+      margin: 0;
+      padding-left: 1rem;
+      color: var(--muted);
     }
 
-    .carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 0.45rem;
-      margin-top: 0.9rem;
+    .entities-list li::marker {
+      color: var(--accent-dark);
     }
-
-    .carousel-dot {
-      width: 9px;
-      height: 9px;
-      border: none;
-      border-radius: 999px;
-      padding: 0;
-      cursor: pointer;
-      background: rgba(147, 165, 200, 0.5);
-      transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .carousel-dot.is-active {
-      background: #ffd05b;
-      transform: scale(1.22);
-      box-shadow: 0 0 12px rgba(255, 208, 91, 0.7);
-    }
-
 
     .muted { color: var(--muted); }
 
@@ -413,9 +300,6 @@
     @media (max-width: 900px) {
       .hero, .grid-3, .grid-2 {
         grid-template-columns: 1fr;
-      }
-      .carousel-slide {
-        flex-basis: min(80vw, 320px);
       }
     }
   </style>
@@ -616,25 +500,18 @@
         <div class="grid-2">
           <article class="card interactive">
             <h3>Entidades con las que colaboro</h3>
-            <div class="carousel-head">
-              <div class="carousel-nav">
-                <button class="carousel-btn" id="prev-entity" aria-label="Anterior">‹</button>
-                <button class="carousel-btn" id="next-entity" aria-label="Siguiente">›</button>
-              </div>
+            <div class="entities-frame" aria-label="Listado de entidades colaboradoras">
+              <ul class="entities-list">
+                <li>Adams Formación</li>
+                <li>Randstad Learning</li>
+                <li>Claire Joster</li>
+                <li>Eurofirms</li>
+                <li>IMF Formación</li>
+                <li>CEOE Campus</li>
+                <li>ISEE</li>
+                <li>FEDETO</li>
+              </ul>
             </div>
-            <div class="carousel-wrap">
-              <div class="carousel-track" id="entity-track">
-                <div class="carousel-slide"><strong>Adams Formación</strong></div>
-                <div class="carousel-slide"><strong>Randstad Learning</strong></div>
-                <div class="carousel-slide"><strong>Claire Joster</strong></div>
-                <div class="carousel-slide"><strong>Eurofirms</strong></div>
-                <div class="carousel-slide"><strong>IMF Formación</strong></div>
-                <div class="carousel-slide"><strong>CEOE Campus</strong></div>
-                <div class="carousel-slide"><strong>ISEE</strong></div>
-                <div class="carousel-slide"><strong>FEDETO</strong></div>
-              </div>
-            </div>
-            <div class="carousel-dots" id="entity-dots" aria-label="Indicadores del carrusel"></div>
           </article>
           <article class="card interactive">
             <h3>Clientes destacados</h3>
@@ -660,6 +537,18 @@
             <h3>Cursor + Python</h3>
             <p class="muted">Open Academy Santander</p>
           </article>
+          <article class="card interactive">
+            <h3>IA Elements</h3>
+            <p class="muted">UNED / Universidad de Helsinki</p>
+          </article>
+          <article class="card interactive">
+            <h3>Pedagogía / Magisterio</h3>
+            <p class="muted">Universidad Complutense de Madrid / UAM</p>
+          </article>
+          <article class="card interactive">
+            <h3>Producción musical</h3>
+            <p class="muted">Universidad de Nebrija</p>
+          </article>
         </div>
       </div>
     </section>
@@ -684,80 +573,6 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-
-    const track = document.getElementById('entity-track');
-    const wrap = track ? track.closest('.carousel-wrap') : null;
-    const prevBtn = document.getElementById('prev-entity');
-    const nextBtn = document.getElementById('next-entity');
-    const dotsContainer = document.getElementById('entity-dots');
-
-    if (track && wrap && prevBtn && nextBtn && dotsContainer) {
-      const slides = Array.from(track.querySelectorAll('.carousel-slide'));
-      let activeIndex = 0;
-      let autoplayId = null;
-      let touchStartX = 0;
-
-      const buildDots = () => {
-        dotsContainer.innerHTML = '';
-        slides.forEach((_, index) => {
-          const dot = document.createElement('button');
-          dot.className = 'carousel-dot';
-          dot.type = 'button';
-          dot.setAttribute('aria-label', `Ir a entidad ${index + 1}`);
-          dot.addEventListener('click', () => moveTo(index));
-          dotsContainer.appendChild(dot);
-        });
-      };
-
-      const render = () => {
-        const wrapCenter = wrap.clientWidth / 2;
-        const slide = slides[activeIndex];
-        const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
-        track.style.transform = `translateX(${wrapCenter - slideCenter}px)`;
-
-        slides.forEach((item, i) => {
-          item.classList.toggle('is-active', i === activeIndex);
-        });
-        Array.from(dotsContainer.children).forEach((dot, i) => {
-          dot.classList.toggle('is-active', i === activeIndex);
-        });
-      };
-
-      const moveTo = (index) => {
-        activeIndex = (index + slides.length) % slides.length;
-        render();
-      };
-
-      const next = () => moveTo(activeIndex + 1);
-      const prev = () => moveTo(activeIndex - 1);
-
-      prevBtn.addEventListener('click', prev);
-      nextBtn.addEventListener('click', next);
-      window.addEventListener('resize', render);
-
-      wrap.addEventListener('touchstart', (e) => {
-        touchStartX = e.touches[0].clientX;
-      }, { passive: true });
-
-      wrap.addEventListener('touchend', (e) => {
-        const diff = e.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(diff) > 35) {
-          if (diff < 0) next();
-          else prev();
-        }
-      });
-
-      const restartAutoplay = () => {
-        clearInterval(autoplayId);
-        autoplayId = setInterval(next, 4500);
-      };
-
-      wrap.addEventListener('mouseenter', () => clearInterval(autoplayId));
-      wrap.addEventListener('mouseleave', restartAutoplay);
-      buildDots();
-      render();
-      restartAutoplay();
-    }
   </script>
 </body>
 </html>
