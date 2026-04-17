@@ -204,6 +204,90 @@
       font-size: 1.1rem;
     }
 
+    .interactive {
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .interactive:hover {
+      transform: translateY(-6px);
+      border-color: rgba(125, 196, 255, 0.5);
+      box-shadow: 0 20px 36px rgba(14, 55, 122, 0.35);
+    }
+
+    .carousel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .carousel-nav {
+      display: inline-flex;
+      gap: 0.5rem;
+    }
+
+    .carousel-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(125, 196, 255, 0.5);
+      background: rgba(47, 140, 255, 0.14);
+      color: var(--accent-dark);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .carousel-btn:hover {
+      transform: translateY(-1px) scale(1.04);
+      background: rgba(47, 140, 255, 0.25);
+    }
+
+    .carousel-wrap {
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(7, 14, 27, 0.85);
+      margin-top: 1rem;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.45s ease;
+      will-change: transform;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      padding: 1.1rem 1.2rem;
+      border-right: 1px solid rgba(147, 165, 200, 0.2);
+    }
+
+    .carousel-slide:last-child {
+      border-right: 0;
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 0.85rem;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(147, 165, 200, 0.45);
+      transition: 0.2s ease;
+    }
+
+    .dot.active {
+      width: 24px;
+      background: var(--accent-dark);
+    }
+
+
     .muted { color: var(--muted); }
 
     ul.clean {
@@ -308,15 +392,15 @@
           Soy docente y consultor senior con trayectoria internacional, combinando una base pedagógica sólida con experiencia ejecutiva en ventas complejas, liderazgo, desarrollo de equipos, cambio cultural e inteligencia artificial aplicada.
         </p>
         <div class="grid-3">
-          <article class="card">
+          <article class="card interactive">
             <h3>Visión estratégica</h3>
             <p class="muted">Comprensión integral de negocio, procesos comerciales y su impacto directo en resultados.</p>
           </article>
-          <article class="card">
+          <article class="card interactive">
             <h3>Formación aplicada</h3>
             <p class="muted">Metodología práctica, medible y orientada a transferencia real al puesto de trabajo.</p>
           </article>
-          <article class="card">
+          <article class="card interactive">
             <h3>Adaptabilidad internacional</h3>
             <p class="muted">Experiencia en distintos contextos culturales y sectores, con enfoque flexible y ejecutivo.</p>
           </article>
@@ -329,7 +413,7 @@
         <h2 class="section-title">Servicios</h2>
         <p class="section-intro">Tres motores para poner a rodar resultados, liderazgo y transformación con IA.</p>
         <div class="grid-3">
-          <article class="card">
+          <article class="card interactive">
             <h3>Formación corporativa</h3>
             <ul class="clean muted">
               <li>Ventas y desarrollo comercial</li>
@@ -338,7 +422,7 @@
               <li>IA generativa aplicada al trabajo</li>
             </ul>
           </article>
-          <article class="card">
+          <article class="card interactive">
             <h3>Consultoría estratégica</h3>
             <ul class="clean muted">
               <li>Desarrollo de negocio</li>
@@ -347,7 +431,7 @@
               <li>Diseño y defensa de proyectos</li>
             </ul>
           </article>
-          <article class="card">
+          <article class="card interactive">
             <h3>Programas para mandos y directivos</h3>
             <ul class="clean muted">
               <li>Liderazgo efectivo</li>
@@ -392,7 +476,7 @@
       <div class="container">
         <h2 class="section-title">Áreas de especialización</h2>
         <div class="grid-2">
-          <article class="card">
+          <article class="card interactive">
             <h3>Ventas y desarrollo comercial</h3>
             <div class="pill-list">
               <span class="pill">Hunting</span>
@@ -403,7 +487,7 @@
               <span class="pill">New Sales Skills</span>
             </div>
           </article>
-          <article class="card">
+          <article class="card interactive">
             <h3>IA aplicada</h3>
             <div class="pill-list">
               <span class="pill">IA generativa</span>
@@ -414,7 +498,7 @@
               <span class="pill">IA para ventas</span>
             </div>
           </article>
-          <article class="card">
+          <article class="card interactive">
             <h3>Liderazgo y gestión de equipos</h3>
             <div class="pill-list">
               <span class="pill">Mandos intermedios</span>
@@ -425,7 +509,7 @@
               <span class="pill">Evaluación 360º</span>
             </div>
           </article>
-          <article class="card">
+          <article class="card interactive">
             <h3>Comunicación y desarrollo organizativo</h3>
             <div class="pill-list">
               <span class="pill">Hablar en público</span>
@@ -444,17 +528,30 @@
       <div class="container">
         <h2 class="section-title">Colaboraciones y clientes</h2>
         <div class="grid-2">
-          <article class="card">
+          <article class="card interactive">
             <h3>Entidades con las que colaboro</h3>
-            <ul class="clean muted">
-              <li>Adams Formación</li>
-              <li>Randstad Learning</li>
-              <li>Claire Joster</li>
-              <li>Eurofirms</li>
-              <li>IMF Formación</li>
-            </ul>
+            <div class="carousel-head">
+              <span class="muted">Desliza para ver todas</span>
+              <div class="carousel-nav">
+                <button class="carousel-btn" id="prev-entity" aria-label="Anterior">‹</button>
+                <button class="carousel-btn" id="next-entity" aria-label="Siguiente">›</button>
+              </div>
+            </div>
+            <div class="carousel-wrap">
+              <div class="carousel-track" id="entity-track">
+                <div class="carousel-slide"><strong>Adams Formación</strong></div>
+                <div class="carousel-slide"><strong>Randstad Learning</strong></div>
+                <div class="carousel-slide"><strong>Claire Joster</strong></div>
+                <div class="carousel-slide"><strong>Eurofirms</strong></div>
+                <div class="carousel-slide"><strong>IMF Formación</strong></div>
+                <div class="carousel-slide"><strong>CEOE Campus</strong></div>
+                <div class="carousel-slide"><strong>ISEE</strong></div>
+                <div class="carousel-slide"><strong>FEDETO</strong></div>
+              </div>
+            </div>
+            <div class="carousel-dots" id="entity-dots" aria-hidden="true"></div>
           </article>
-          <article class="card">
+          <article class="card interactive">
             <h3>Clientes destacados</h3>
             <p class="muted">Intelcia, Ford, Faconauto, Acciona, Coca-Cola, Audemars Piguet, HC Hospitales, Trane Technologies, CCC, Alcampo, Actren y Assa Abloy.</p>
           </article>
@@ -466,15 +563,15 @@
       <div class="container">
         <h2 class="section-title">Formación y certificaciones</h2>
         <div class="grid-3">
-          <article class="card">
+          <article class="card interactive">
             <h3>Make Intermediate</h3>
             <p class="muted">Make Academy</p>
           </article>
-          <article class="card">
+          <article class="card interactive">
             <h3>Copilot</h3>
             <p class="muted">OpenAcademy Santander</p>
           </article>
-          <article class="card">
+          <article class="card interactive">
             <h3>Cursor + Python</h3>
             <p class="muted">Open Academy Santander</p>
           </article>
@@ -484,9 +581,8 @@
 
     <section id="contacto">
       <div class="container">
-        <div class="card">
+        <div class="card interactive">
           <h2 class="section-title">Contacto</h2>
-          <p class="section-intro">Si quieres una web viva en GitHub Pages, aquí ya tienes el motor. Solo faltan dos tornillos y darle al interruptor.</p>
           <p><strong>Email:</strong> <a href="mailto:paco.lopez.nap@gmail.com">paco.lopez.nap@gmail.com</a></p>
           <p><strong>Teléfono:</strong> <a href="tel:+34645756904">645 75 69 04</a></p>
         </div>
@@ -502,6 +598,50 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+
+    const track = document.getElementById('entity-track');
+    const slides = track ? [...track.children] : [];
+    const dotsWrap = document.getElementById('entity-dots');
+    const prevBtn = document.getElementById('prev-entity');
+    const nextBtn = document.getElementById('next-entity');
+
+    if (track && dotsWrap && prevBtn && nextBtn && slides.length) {
+      let current = 0;
+      let autoSlide;
+
+      slides.forEach((_, index) => {
+        const dot = document.createElement('span');
+        dot.className = `dot${index === 0 ? ' active' : ''}`;
+        dotsWrap.appendChild(dot);
+      });
+
+      const dots = [...dotsWrap.children];
+
+      function renderSlide(index) {
+        current = (index + slides.length) % slides.length;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dots.forEach((dot, idx) => dot.classList.toggle('active', idx === current));
+      }
+
+      function startAutoSlide() {
+        clearInterval(autoSlide);
+        autoSlide = setInterval(() => renderSlide(current + 1), 5000);
+      }
+
+      prevBtn.addEventListener('click', () => {
+        renderSlide(current - 1);
+        startAutoSlide();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        renderSlide(current + 1);
+        startAutoSlide();
+      });
+
+      renderSlide(0);
+      startAutoSlide();
+    }
   </script>
 </body>
 </html>
