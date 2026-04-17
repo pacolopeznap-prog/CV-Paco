@@ -204,6 +204,27 @@
       font-size: 1.1rem;
     }
 
+    .repo-highlight {
+      margin-top: 1.25rem;
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      max-width: 240px;
+    }
+
+    .repo-highlight img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(125, 196, 255, 0.35);
+      box-shadow: 0 10px 24px rgba(2, 8, 18, 0.45);
+    }
+
+    .repo-highlight small {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
     .interactive {
       transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
     }
@@ -245,46 +266,46 @@
     }
 
     .carousel-wrap {
-      overflow: hidden;
+      overflow-x: auto;
+      overflow-y: hidden;
       border-radius: 18px;
       border: 1px solid var(--line);
       background: rgba(7, 14, 27, 0.85);
       margin-top: 1rem;
+      padding: 0.75rem;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
     }
 
     .carousel-track {
-      display: flex;
-      transition: transform 0.45s ease;
-      will-change: transform;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(180px, 1fr);
+      gap: 0.75rem;
     }
 
     .carousel-slide {
-      min-width: 100%;
-      padding: 1.1rem 1.2rem;
-      border-right: 1px solid rgba(147, 165, 200, 0.2);
+      scroll-snap-align: start;
+      min-height: 104px;
+      padding: 1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(147, 165, 200, 0.3);
+      background: linear-gradient(160deg, rgba(18, 31, 54, 0.95), rgba(10, 18, 33, 0.96));
+      display: flex;
+      align-items: end;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
     }
 
-    .carousel-slide:last-child {
-      border-right: 0;
+    .carousel-slide:hover {
+      transform: scale(1.05);
+      border-color: rgba(125, 196, 255, 0.7);
+      box-shadow: 0 14px 28px rgba(14, 55, 122, 0.35);
+      z-index: 2;
     }
 
     .carousel-dots {
-      display: flex;
-      gap: 0.4rem;
-      margin-top: 0.85rem;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: rgba(147, 165, 200, 0.45);
-      transition: 0.2s ease;
-    }
-
-    .dot.active {
-      width: 24px;
-      background: var(--accent-dark);
+      display: none;
     }
 
 
@@ -334,6 +355,10 @@
       .hero, .grid-3, .grid-2 {
         grid-template-columns: 1fr;
       }
+
+      .carousel-track {
+        grid-auto-columns: minmax(150px, 72vw);
+      }
     }
   </style>
 </head>
@@ -362,6 +387,10 @@
             <a class="btn primary" href="mailto:paco.lopez.nap@gmail.com">Contactar por email</a>
             <a class="btn secondary" href="#experiencia">Ver experiencia</a>
           </div>
+          <a class="repo-highlight" href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="Ver repositorio de GitHub">
+            <img src="5d3d6ada-03a6-4c80-805b-f192a69c2e12.png" alt="Imagen del repositorio en GitHub" />
+            <small>Repositorio de GitHub</small>
+          </a>
         </div>
 
         <aside class="hero-card">
@@ -531,7 +560,7 @@
           <article class="card interactive">
             <h3>Entidades con las que colaboro</h3>
             <div class="carousel-head">
-              <span class="muted">Desliza para ver todas</span>
+              <span class="muted">Carrusel estilo Netflix</span>
               <div class="carousel-nav">
                 <button class="carousel-btn" id="prev-entity" aria-label="Anterior">‹</button>
                 <button class="carousel-btn" id="next-entity" aria-label="Siguiente">›</button>
@@ -553,7 +582,7 @@
           </article>
           <article class="card interactive">
             <h3>Clientes destacados</h3>
-            <p class="muted">Intelcia, Ford, Faconauto, Acciona, Coca-Cola, Audemars Piguet, HC Hospitales, Trane Technologies, CCC, Alcampo, Actren y Assa Abloy.</p>
+            <p class="muted">Intelcia, Ford, Faconauto, Acciona, Coca-Cola, Audemars Piguet, HC Hospitales, Trane Technologies, CCC, Alcampo, Actren y Assa Abloy, entre otros.</p>
           </article>
         </div>
       </div>
@@ -601,46 +630,20 @@
 
 
     const track = document.getElementById('entity-track');
-    const slides = track ? [...track.children] : [];
-    const dotsWrap = document.getElementById('entity-dots');
+    const wrap = track ? track.closest('.carousel-wrap') : null;
     const prevBtn = document.getElementById('prev-entity');
     const nextBtn = document.getElementById('next-entity');
 
-    if (track && dotsWrap && prevBtn && nextBtn && slides.length) {
-      let current = 0;
-      let autoSlide;
-
-      slides.forEach((_, index) => {
-        const dot = document.createElement('span');
-        dot.className = `dot${index === 0 ? ' active' : ''}`;
-        dotsWrap.appendChild(dot);
-      });
-
-      const dots = [...dotsWrap.children];
-
-      function renderSlide(index) {
-        current = (index + slides.length) % slides.length;
-        track.style.transform = `translateX(-${current * 100}%)`;
-        dots.forEach((dot, idx) => dot.classList.toggle('active', idx === current));
-      }
-
-      function startAutoSlide() {
-        clearInterval(autoSlide);
-        autoSlide = setInterval(() => renderSlide(current + 1), 5000);
-      }
+    if (track && wrap && prevBtn && nextBtn) {
+      const step = () => Math.max(220, Math.round(wrap.clientWidth * 0.6));
 
       prevBtn.addEventListener('click', () => {
-        renderSlide(current - 1);
-        startAutoSlide();
+        wrap.scrollBy({ left: -step(), behavior: 'smooth' });
       });
 
       nextBtn.addEventListener('click', () => {
-        renderSlide(current + 1);
-        startAutoSlide();
+        wrap.scrollBy({ left: step(), behavior: 'smooth' });
       });
-
-      renderSlide(0);
-      startAutoSlide();
     }
   </script>
 </body>
