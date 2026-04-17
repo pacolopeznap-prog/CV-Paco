@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Francisco Javier López González | Portfolio</title>
-  <meta name="description" content="Docente, consultor HR & Business Developer, especialista en ventas, liderazgo e IA aplicada." />
+  <title>FJLab | Francisco Javier López González</title>
+  <meta name="description" content="FJLab · Docente, consultor HR & Business Developer, especialista en ventas, liderazgo e IA aplicada." />
   <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap");
     :root {
-      --bg: #f7f4f2;
-      --card: #ffffff;
-      --text: #1f1f1f;
-      --muted: #666;
-      --accent: #c97f7f;
-      --accent-dark: #a85f5f;
-      --line: #e7dedd;
+      --bg: #070b14;
+      --card: #0f1726;
+      --text: #e7eeff;
+      --muted: #93a5c8;
+      --accent: #2f8cff;
+      --accent-dark: #7dc4ff;
+      --line: #1f2d45;
       --max: 1120px;
     }
 
@@ -21,8 +22,8 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 12% -5%, #163a78 0, transparent 35%), linear-gradient(135deg, #050913 0%, #071326 40%, #02050b 100%);
       color: var(--text);
       line-height: 1.6;
     }
@@ -35,9 +36,9 @@
     }
 
     header {
-      background: linear-gradient(rgba(247, 244, 242, 0.9), rgba(247, 244, 242, 0.96)),
-        radial-gradient(circle at top right, rgba(201, 127, 127, 0.15), transparent 30%);
+      background: linear-gradient(180deg, rgba(8, 16, 33, 0.88), rgba(6, 12, 24, 0.95));
       border-bottom: 1px solid var(--line);
+      box-shadow: inset 0 -1px 0 rgba(125, 196, 255, 0.08);
     }
 
     nav {
@@ -50,10 +51,13 @@
     }
 
     .brand {
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 700;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
+      font-family: "Space Grotesk", "Inter", sans-serif;
+      color: var(--accent-dark);
+      text-shadow: 0 0 18px rgba(125, 196, 255, 0.35);
     }
 
     .nav-links {
@@ -76,8 +80,9 @@
       display: inline-block;
       padding: 0.35rem 0.75rem;
       border-radius: 999px;
-      background: rgba(201, 127, 127, 0.12);
+      background: rgba(47, 140, 255, 0.12);
       color: var(--accent-dark);
+      border: 1px solid rgba(125, 196, 255, 0.35);
       font-size: 0.85rem;
       font-weight: 600;
       margin-bottom: 1rem;
@@ -88,6 +93,7 @@
       line-height: 1.05;
       margin: 0 0 1rem;
       letter-spacing: -0.03em;
+      font-family: "Space Grotesk", "Inter", sans-serif;
     }
 
     .lead {
@@ -98,10 +104,11 @@
     }
 
     .hero-card, .card {
-      background: var(--card);
+      background: linear-gradient(160deg, rgba(14, 24, 41, 0.95), rgba(9, 15, 27, 0.96));
       border: 1px solid var(--line);
       border-radius: 24px;
-      box-shadow: 0 10px 30px rgba(31,31,31,0.04);
+      box-shadow: 0 14px 36px rgba(2, 8, 18, 0.45);
+      backdrop-filter: blur(3px);
     }
 
     .hero-card {
@@ -116,7 +123,7 @@
     .stat {
       padding: 1rem;
       border-radius: 18px;
-      background: #fcfaf9;
+      background: rgba(9, 18, 34, 0.8);
       border: 1px solid var(--line);
     }
 
@@ -150,13 +157,13 @@
     }
 
     .btn.secondary {
-      background: white;
+      background: rgba(47, 140, 255, 0.1);
       color: var(--accent-dark);
     }
 
     .btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(201, 127, 127, 0.14);
+      box-shadow: 0 8px 18px rgba(47, 140, 255, 0.25);
     }
 
     section {
@@ -212,7 +219,7 @@
     .timeline .item {
       padding: 1.2rem 1.3rem;
       border-left: 4px solid var(--accent);
-      background: white;
+      background: rgba(11, 20, 37, 0.9);
       border-radius: 0 18px 18px 0;
       border-top: 1px solid var(--line);
       border-right: 1px solid var(--line);
@@ -228,7 +235,7 @@
     .pill {
       padding: 0.65rem 0.9rem;
       border-radius: 999px;
-      background: white;
+      background: rgba(11, 20, 37, 0.9);
       border: 1px solid var(--line);
       font-size: 0.95rem;
     }
@@ -250,7 +257,7 @@
   <header>
     <div class="container">
       <nav>
-        <div class="brand">Francisco Javier López González</div>
+        <div class="brand">FJLab · Francisco Javier López González</div>
         <div class="nav-links">
           <a href="#sobre-mi">Sobre mí</a>
           <a href="#servicios">Servicios</a>
@@ -263,7 +270,7 @@
       <div class="hero">
         <div>
           <span class="eyebrow">Docente · Consultor · Business Developer</span>
-          <h1>Ventas, liderazgo e IA aplicada con enfoque real de negocio.</h1>
+          <h1>FJLab — Ventas, liderazgo e IA aplicada con enfoque real de negocio.</h1>
           <p class="lead">
             Ayudo a empresas, equipos y profesionales a mejorar resultados comerciales, desarrollar liderazgo y aplicar la inteligencia artificial de forma práctica, rentable y aterrizada.
           </p>
@@ -357,6 +364,10 @@
       <div class="container">
         <h2 class="section-title">Experiencia destacada</h2>
         <div class="timeline">
+          <div class="item">
+            <h3>Docente y tutor · Programa Superior en IA</h3>
+            <p class="muted">Diseño e impartición del programa para CEOE Campus y FEDETO, acompañando a profesionales y empresas en la adopción práctica de inteligencia artificial.</p>
+          </div>
           <div class="item">
             <h3>Grupo Virensis · Vicepresidente Ejecutivo</h3>
             <p class="muted">Responsable del desarrollo estratégico y operativo durante casi una década, participando en un crecimiento acumulado del 80%.</p>
