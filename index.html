@@ -3,576 +3,336 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FJLab | Francisco Javier López González</title>
-  <meta name="description" content="FJLab · Docente, consultor HR & Business Developer, especialista en ventas, liderazgo e IA aplicada." />
+  <title>versonoro | verso sonoro</title>
+  <meta name="description" content="versonoro: poesía escrita y en audio con estética oscura old school tattoo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap");
     :root {
-      --bg: #070b14;
-      --card: #0f1726;
-      --text: #e7eeff;
-      --muted: #93a5c8;
-      --accent: #2f8cff;
-      --accent-dark: #7dc4ff;
-      --line: #1f2d45;
-      --max: 1120px;
+      --bg: #090505;
+      --paper: #171010;
+      --line: #3d2424;
+      --text: #f2e8dd;
+      --muted: #c6b4a0;
+      --accent: #d13a2f;
+      --accent-soft: #f2b08b;
+      --shadow: rgba(0, 0, 0, 0.5);
+      --max: 1080px;
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at 12% -5%, #163a78 0, transparent 35%), linear-gradient(135deg, #050913 0%, #071326 40%, #02050b 100%);
+      font-family: "Inter", system-ui, sans-serif;
       color: var(--text);
-      line-height: 1.6;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(209, 58, 47, 0.22), transparent 40%),
+        radial-gradient(circle at 80% 20%, rgba(242, 176, 139, 0.08), transparent 42%),
+        linear-gradient(145deg, #050303 0%, #0b0707 45%, #140d0d 100%);
+      min-height: 100vh;
     }
 
-    a { color: inherit; text-decoration: none; }
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      background-image: radial-gradient(#fff 0.4px, transparent 0.4px);
+      background-size: 3px 3px;
+      z-index: 0;
+    }
 
     .container {
+      position: relative;
+      z-index: 1;
       width: min(92%, var(--max));
       margin: 0 auto;
     }
 
     header {
-      background: linear-gradient(180deg, rgba(8, 16, 33, 0.88), rgba(6, 12, 24, 0.95));
       border-bottom: 1px solid var(--line);
-      box-shadow: inset 0 -1px 0 rgba(125, 196, 255, 0.08);
+      background: rgba(8, 4, 4, 0.8);
+      backdrop-filter: blur(4px);
+      position: sticky;
+      top: 0;
+      z-index: 2;
     }
 
     nav {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 1rem 0;
       gap: 1rem;
       flex-wrap: wrap;
+      align-items: center;
+      padding: 0.95rem 0;
     }
 
     .brand {
-      font-size: 1rem;
-      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: "Cinzel", serif;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-family: "Space Grotesk", "Inter", sans-serif;
-      color: var(--accent-dark);
-      text-shadow: 0 0 18px rgba(125, 196, 255, 0.35);
+      font-weight: 700;
+      color: var(--accent-soft);
     }
 
     .nav-links {
       display: flex;
-      gap: 1rem;
       flex-wrap: wrap;
+      gap: 1rem;
       color: var(--muted);
       font-size: 0.95rem;
     }
 
+    a { color: inherit; text-decoration: none; }
+
     .hero {
-      padding: 5rem 0 4rem;
+      padding: 4.5rem 0 2.8rem;
       display: grid;
       grid-template-columns: 1.3fr 0.7fr;
-      gap: 2rem;
-      align-items: center;
+      gap: 1.4rem;
     }
 
-    .eyebrow {
-      display: inline-block;
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      background: rgba(47, 140, 255, 0.12);
-      color: var(--accent-dark);
-      border: 1px solid rgba(125, 196, 255, 0.35);
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
+    h1, h2, h3 {
+      font-family: "Cinzel", serif;
+      letter-spacing: 0.03em;
+      margin-top: 0;
     }
 
     h1 {
-      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-size: clamp(2rem, 5vw, 4rem);
+      margin-bottom: 0.85rem;
       line-height: 1.05;
-      margin: 0 0 1rem;
-      letter-spacing: -0.03em;
-      font-family: "Space Grotesk", "Inter", sans-serif;
     }
 
     .lead {
-      font-size: 1.1rem;
       color: var(--muted);
-      max-width: 65ch;
-      margin-bottom: 1.5rem;
+      max-width: 60ch;
+      font-size: 1.05rem;
     }
 
-    .hero-card, .card {
-      background: linear-gradient(160deg, rgba(14, 24, 41, 0.95), rgba(9, 15, 27, 0.96));
+    .panel {
+      background: linear-gradient(160deg, rgba(27, 16, 16, 0.95), rgba(15, 10, 10, 0.95));
       border: 1px solid var(--line);
-      border-radius: 24px;
-      box-shadow: 0 14px 36px rgba(2, 8, 18, 0.45);
-      backdrop-filter: blur(3px);
-    }
-
-    .hero-card {
-      padding: 1.5rem;
-    }
-
-    .stats {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .stat {
-      padding: 1rem;
       border-radius: 18px;
-      background: rgba(9, 18, 34, 0.8);
-      border: 1px solid var(--line);
+      padding: 1.2rem;
+      box-shadow: 0 14px 25px var(--shadow);
     }
 
-    .stat strong {
-      display: block;
-      font-size: 1.7rem;
-      color: var(--accent-dark);
-    }
-
-    .cta-row {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 1.75rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.9rem 1.2rem;
+    .tattoo-board {
+      min-height: 200px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--accent-soft);
+      border: 1px dashed rgba(242, 176, 139, 0.35);
       border-radius: 14px;
-      font-weight: 600;
-      border: 1px solid var(--accent);
-      transition: 0.2s ease;
     }
 
-    .btn.primary {
-      background: var(--accent);
-      color: white;
+    .icon-row {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
     }
 
-    .btn.secondary {
-      background: rgba(47, 140, 255, 0.1);
-      color: var(--accent-dark);
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(47, 140, 255, 0.25);
+    .ink {
+      width: 62px;
+      height: 62px;
+      fill: none;
+      stroke: var(--accent-soft);
+      stroke-width: 2;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.45));
     }
 
     section {
-      padding: 4rem 0;
+      padding: 1rem 0 2.8rem;
     }
 
-    .section-title {
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      margin: 0 0 0.75rem;
-      letter-spacing: -0.02em;
+    .section-head {
+      margin-bottom: 1rem;
     }
 
-    .section-intro {
-      color: var(--muted);
-      max-width: 70ch;
-      margin-bottom: 2rem;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-    }
-
-    .card {
-      padding: 1.4rem;
-    }
-
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 0.7rem;
-      font-size: 1.1rem;
-    }
-
-    .repo-highlight {
-      margin-top: 1.25rem;
-      display: inline-flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      max-width: 240px;
-    }
-
-    .repo-highlight img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      border: 1px solid rgba(125, 196, 255, 0.35);
-      box-shadow: 0 10px 24px rgba(2, 8, 18, 0.45);
-    }
-
-    .repo-highlight small {
-      color: var(--muted);
-      font-size: 0.82rem;
-    }
-
-    .interactive {
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .interactive:hover {
-      transform: translateY(-6px);
-      border-color: rgba(125, 196, 255, 0.5);
-      box-shadow: 0 20px 36px rgba(14, 55, 122, 0.35);
-    }
-
-    .entities-frame {
-      margin-top: 1rem;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: rgba(7, 14, 27, 0.86);
-      padding: 1.1rem;
-    }
-
-    .entities-list {
-      display: grid;
-      gap: 0.6rem;
+    .section-head p {
       margin: 0;
-      padding-left: 1rem;
       color: var(--muted);
     }
 
-    .entities-list li::marker {
-      color: var(--accent-dark);
-    }
-
-    .muted { color: var(--muted); }
-
-    ul.clean {
-      margin: 0;
-      padding-left: 1.1rem;
-    }
-
-    .timeline {
+    .grid {
       display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1rem;
     }
 
-    .timeline .item {
-      padding: 1.2rem 1.3rem;
-      border-left: 4px solid var(--accent);
-      background: rgba(11, 20, 37, 0.9);
-      border-radius: 0 18px 18px 0;
-      border-top: 1px solid var(--line);
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+    .poem {
+      white-space: pre-line;
+      color: #ecdcc8;
+      line-height: 1.7;
+      margin-bottom: 1rem;
     }
 
-    .pill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
+    button {
+      border: 1px solid var(--accent);
+      background: rgba(209, 58, 47, 0.16);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 0.6rem 0.95rem;
+      cursor: pointer;
+      font-weight: 600;
     }
 
-    .pill {
-      padding: 0.65rem 0.9rem;
-      border-radius: 999px;
-      background: rgba(11, 20, 37, 0.9);
-      border: 1px solid var(--line);
-      font-size: 0.95rem;
+    button:hover { background: rgba(209, 58, 47, 0.3); }
+
+    .audio-block audio {
+      width: 100%;
+      margin-top: 0.7rem;
+      filter: sepia(60%) hue-rotate(-20deg) saturate(1.1);
     }
 
     footer {
-      padding: 2.5rem 0 4rem;
       border-top: 1px solid var(--line);
+      padding: 1.8rem 0 2.5rem;
       color: var(--muted);
+      text-align: center;
     }
 
-    @media (max-width: 900px) {
-      .hero, .grid-3, .grid-2 {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 860px) {
+      .hero, .grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute">
+    <symbol id="skull" viewBox="0 0 64 64">
+      <path d="M18 28c0-8 6-14 14-14s14 6 14 14c0 5-2 8-5 11v6H23v-6c-3-3-5-6-5-11Z"/>
+      <circle cx="26" cy="28" r="3"/>
+      <circle cx="38" cy="28" r="3"/>
+      <path d="M30 35h4l-2 3-2-3Zm-6 12v5m5-5v5m5-5v5m5-5v5"/>
+    </symbol>
+    <symbol id="snake" viewBox="0 0 64 64">
+      <path d="M10 46c2-7 10-8 15-5 7 4 15-1 14-8-1-5-6-8-11-7-5 1-8 6-8 10m30 0c-2 7-10 8-15 5-7-4-15 1-14 8 1 5 6 8 11 7 5-1 8-6 8-10"/>
+      <circle cx="10" cy="46" r="2"/>
+      <path d="M8 44 5 42m3 2-3 2"/>
+    </symbol>
+  </svg>
+
+  <div class="grain"></div>
+
   <header>
     <div class="container">
       <nav>
-        <div class="brand">FJLab · Francisco Javier López González</div>
+        <div class="brand">versonoro · verso sonoro</div>
         <div class="nav-links">
-          <a href="#sobre-mi">Sobre mí</a>
-          <a href="#servicios">Servicios</a>
-          <a href="#experiencia">Experiencia</a>
-          <a href="#especializacion">Especialización</a>
-          <a href="#contacto">Contacto</a>
+          <a href="#escrita">Poesía escrita</a>
+          <a href="#audio">Poesía en audio</a>
+          <a href="#manifiesto">Manifiesto</a>
         </div>
       </nav>
-
-      <div class="hero">
-        <div>
-          <span class="eyebrow">Docente · Consultor · Business Developer</span>
-          <h1>FJLab — Ventas, liderazgo e IA aplicada con enfoque real de negocio.</h1>
-          <p class="lead">
-            Ayudo a empresas, equipos y profesionales a mejorar resultados comerciales, desarrollar liderazgo y aplicar la inteligencia artificial de forma práctica, rentable y aterrizada.
-          </p>
-          <div class="cta-row">
-            <a class="btn primary" href="mailto:paco.lopez.nap@gmail.com">Contactar por email</a>
-            <a class="btn secondary" href="#experiencia">Ver experiencia</a>
-          </div>
-          <a class="repo-highlight" href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="Ver repositorio de GitHub">
-            <img src="5d3d6ada-03a6-4c80-805b-f192a69c2e12.png" alt="Imagen del repositorio en GitHub" />
-          </a>
-        </div>
-
-        <aside class="hero-card">
-          <div class="stats">
-            <div class="stat">
-              <strong>20+ años</strong>
-              <span>en ámbito comercial, formación y desarrollo de negocio</span>
-            </div>
-            <div class="stat">
-              <strong>10+ años</strong>
-              <span>en posiciones directivas y estratégicas</span>
-            </div>
-            <div class="stat">
-              <strong>4 regiones</strong>
-              <span>experiencia en España, África, Oriente Medio y Latinoamérica</span>
-            </div>
-          </div>
-        </aside>
-      </div>
     </div>
   </header>
 
-  <main>
-    <section id="sobre-mi">
-      <div class="container">
-        <h2 class="section-title">Sobre mí</h2>
-        <p class="section-intro">
-          Soy docente y consultor senior con trayectoria internacional, combinando una base pedagógica sólida con experiencia ejecutiva en ventas complejas, liderazgo, desarrollo de equipos, cambio cultural e inteligencia artificial aplicada.
+  <main class="container">
+    <section class="hero" id="manifiesto">
+      <div>
+        <h1>Poemas con tinta,
+voz y cicatriz.</h1>
+        <p class="lead">
+          <strong>versonoro</strong> es un santuario oscuro de poesía: palabra escrita y palabra dicha. Una mezcla de noche, papel gastado y estética old school tattoo entre calaveras, serpientes y fuego.
         </p>
-        <div class="grid-3">
-          <article class="card interactive">
-            <h3>Visión estratégica</h3>
-            <p class="muted">Comprensión integral de negocio, procesos comerciales y su impacto directo en resultados.</p>
-          </article>
-          <article class="card interactive">
-            <h3>Formación aplicada</h3>
-            <p class="muted">Metodología práctica, medible y orientada a transferencia real al puesto de trabajo.</p>
-          </article>
-          <article class="card interactive">
-            <h3>Adaptabilidad internacional</h3>
-            <p class="muted">Experiencia en distintos contextos culturales y sectores, con enfoque flexible y ejecutivo.</p>
-          </article>
-        </div>
       </div>
-    </section>
-
-    <section id="servicios">
-      <div class="container">
-        <h2 class="section-title">Servicios</h2>
-        <p class="section-intro">Tres motores para poner a rodar resultados, liderazgo y transformación con IA.</p>
-        <div class="grid-3">
-          <article class="card interactive">
-            <h3>Formación corporativa</h3>
-            <ul class="clean muted">
-              <li>Ventas y desarrollo comercial</li>
-              <li>Liderazgo y gestión de equipos</li>
-              <li>Comunicación y soft skills</li>
-              <li>IA generativa aplicada al trabajo</li>
-            </ul>
-          </article>
-          <article class="card interactive">
-            <h3>Consultoría estratégica</h3>
-            <ul class="clean muted">
-              <li>Desarrollo de negocio</li>
-              <li>Optimización comercial</li>
-              <li>Transformación cultural</li>
-              <li>Diseño y defensa de proyectos</li>
-            </ul>
-          </article>
-          <article class="card interactive">
-            <h3>Programas para mandos y directivos</h3>
-            <ul class="clean muted">
-              <li>Liderazgo efectivo</li>
-              <li>Gestión del cambio</li>
-              <li>Feedback profesional</li>
-              <li>Comunicación de alto impacto</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="experiencia">
-      <div class="container">
-        <h2 class="section-title">Experiencia destacada</h2>
-        <div class="timeline">
-          <div class="item">
-            <h3>Docente y tutor · Programa Superior en IA</h3>
-            <p class="muted">Diseño e impartición del programa para CEOE Campus y FEDETO, acompañando a profesionales y empresas en la adopción práctica de inteligencia artificial.</p>
-          </div>
-          <div class="item">
-            <h3>Grupo Virensis · Vicepresidente Ejecutivo</h3>
-            <p class="muted">Responsable del desarrollo estratégico y operativo durante casi una década, participando en un crecimiento acumulado del 80%.</p>
-          </div>
-          <div class="item">
-            <h3>Zero Racing Motorsport · Fundador & CEO</h3>
-            <p class="muted">Creación y gestión de escudería propia en colaboración con Triumph Motorcycles para el Campeonato de España de Velocidad.</p>
-          </div>
-          <div class="item">
-            <h3>Cronogestión y LICITARI · Fundador & CSO</h3>
-            <p class="muted">Proyecto de outsourcing comercial para pymes y autónomos, enfocado en procesos de venta y licitaciones públicas.</p>
-          </div>
-          <div class="item">
-            <h3>GALEA · Consultor Internacional</h3>
-            <p class="muted">Liderazgo de proyectos estratégicos en África Central y Colombia, incluyendo procesos de negociación de paz.</p>
+      <aside class="panel">
+        <div class="tattoo-board">
+          <div>
+            <strong>Old School Ink</strong>
+            <p>calaveras · serpientes · rosas · llamas</p>
           </div>
         </div>
+        <div class="icon-row" aria-hidden="true">
+          <svg class="ink"><use href="#skull"></use></svg>
+          <svg class="ink"><use href="#snake"></use></svg>
+        </div>
+      </aside>
+    </section>
+
+    <section id="escrita">
+      <div class="section-head">
+        <h2>Poesía escrita</h2>
+        <p>Textos cortos listos para publicación en GitHub Pages.</p>
+      </div>
+      <div class="grid">
+        <article class="panel">
+          <h3>01 · Tinta negra</h3>
+          <p class="poem">Fui nombre borrado en la acera,
+            un golpe de luz bajo la piel.
+            Donde dolía, floreció la letra;
+            donde caí, aprendí a arder.</p>
+          <button data-poem="Fui nombre borrado en la acera, un golpe de luz bajo la piel. Donde dolía, floreció la letra; donde caí, aprendí a arder.">Escuchar con voz sintética</button>
+        </article>
+
+        <article class="panel">
+          <h3>02 · Serpiente de humo</h3>
+          <p class="poem">Silba la noche en mi garganta,
+            muda de piel, vuelve a empezar.
+            Soy la serpiente que no descansa,
+            muerde el silencio para cantar.</p>
+          <button data-poem="Silba la noche en mi garganta, muda de piel, vuelve a empezar. Soy la serpiente que no descansa, muerde el silencio para cantar.">Escuchar con voz sintética</button>
+        </article>
       </div>
     </section>
 
-    <section id="especializacion">
-      <div class="container">
-        <h2 class="section-title">Áreas de especialización</h2>
-        <div class="grid-2">
-          <article class="card interactive">
-            <h3>Ventas y desarrollo comercial</h3>
-            <div class="pill-list">
-              <span class="pill">Hunting</span>
-              <span class="pill">Fidelización</span>
-              <span class="pill">Venta compleja</span>
-              <span class="pill">Persuasión</span>
-              <span class="pill">Dirección de ventas</span>
-              <span class="pill">New Sales Skills</span>
-            </div>
-          </article>
-          <article class="card interactive">
-            <h3>IA aplicada</h3>
-            <div class="pill-list">
-              <span class="pill">IA generativa</span>
-              <span class="pill">ChatGPT</span>
-              <span class="pill">Copilot</span>
-              <span class="pill">Automatización</span>
-              <span class="pill">Productividad</span>
-              <span class="pill">IA para ventas</span>
-            </div>
-          </article>
-          <article class="card interactive">
-            <h3>Liderazgo y gestión de equipos</h3>
-            <div class="pill-list">
-              <span class="pill">Mandos intermedios</span>
-              <span class="pill">Motivación</span>
-              <span class="pill">Conflictos</span>
-              <span class="pill">Comunicación efectiva</span>
-              <span class="pill">Feedback</span>
-              <span class="pill">Evaluación 360º</span>
-            </div>
-          </article>
-          <article class="card interactive">
-            <h3>Comunicación y desarrollo organizativo</h3>
-            <div class="pill-list">
-              <span class="pill">Hablar en público</span>
-              <span class="pill">Inteligencia emocional</span>
-              <span class="pill">Trabajo en equipo</span>
-              <span class="pill">Diseño de proyectos</span>
-              <span class="pill">Negociación internacional</span>
-              <span class="pill">Cambio cultural</span>
-            </div>
-          </article>
-        </div>
+    <section id="audio">
+      <div class="section-head">
+        <h2>Poesía en audio</h2>
+        <p>Espacio para subir recitados propios en mp3/ogg (puedes reemplazar las URLs).</p>
       </div>
-    </section>
+      <div class="grid">
+        <article class="panel audio-block">
+          <h3>Recitado · Tinta negra</h3>
+          <audio controls preload="none">
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+            Tu navegador no soporta audio HTML5.
+          </audio>
+        </article>
 
-    <section>
-      <div class="container">
-        <h2 class="section-title">Colaboraciones y clientes</h2>
-        <div class="grid-2">
-          <article class="card interactive">
-            <h3>Entidades con las que colaboro</h3>
-            <div class="entities-frame" aria-label="Listado de entidades colaboradoras">
-              <ul class="entities-list">
-                <li>Adams Formación</li>
-                <li>Randstad Learning</li>
-                <li>Claire Joster</li>
-                <li>Eurofirms</li>
-                <li>IMF Formación</li>
-                <li>CEOE Campus</li>
-                <li>ISEE</li>
-                <li>FEDETO</li>
-              </ul>
-            </div>
-          </article>
-          <article class="card interactive">
-            <h3>Clientes destacados</h3>
-            <p class="muted">Intelcia, Ford, Faconauto, Acciona, Coca-Cola, Audemars Piguet, HC Hospitales, Trane Technologies, CCC, Alcampo, Actren y Assa Abloy, entre otros.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <h2 class="section-title">Formación y certificaciones</h2>
-        <div class="grid-3">
-          <article class="card interactive">
-            <h3>Make Intermediate</h3>
-            <p class="muted">Make Academy</p>
-          </article>
-          <article class="card interactive">
-            <h3>Copilot</h3>
-            <p class="muted">OpenAcademy Santander</p>
-          </article>
-          <article class="card interactive">
-            <h3>Cursor + Python</h3>
-            <p class="muted">Open Academy Santander</p>
-          </article>
-          <article class="card interactive">
-            <h3>IA Elements</h3>
-            <p class="muted">UNED / Universidad de Helsinki</p>
-          </article>
-          <article class="card interactive">
-            <h3>Pedagogía / Magisterio</h3>
-            <p class="muted">Universidad Complutense de Madrid / UAM</p>
-          </article>
-          <article class="card interactive">
-            <h3>Producción musical</h3>
-            <p class="muted">Universidad de Nebrija</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contacto">
-      <div class="container">
-        <div class="card interactive">
-          <h2 class="section-title">Contacto</h2>
-          <p><strong>Email:</strong> <a href="mailto:paco.lopez.nap@gmail.com">paco.lopez.nap@gmail.com</a></p>
-          <p><strong>Teléfono:</strong> <a href="tel:+34645756904">645 75 69 04</a></p>
-        </div>
+        <article class="panel audio-block">
+          <h3>Recitado · Serpiente de humo</h3>
+          <audio controls preload="none">
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+            Tu navegador no soporta audio HTML5.
+          </audio>
+        </article>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      <p>© <span id="year"></span> Francisco Javier López González. Portfolio profesional.</p>
-    </div>
+    © <span id="year"></span> versonoro · poesía escrita y en audio.
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    const buttons = document.querySelectorAll('button[data-poem]');
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const poem = button.dataset.poem;
+        if (!('speechSynthesis' in window)) {
+          alert('Tu navegador no soporta voz sintética.');
+          return;
+        }
+
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(poem);
+        utterance.lang = 'es-ES';
+        utterance.rate = 0.9;
+        utterance.pitch = 0.95;
+        window.speechSynthesis.speak(utterance);
+      });
+    });
   </script>
 </body>
 </html>
